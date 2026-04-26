@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Études — Modern Web Studio</title>
+
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ═══ CURSOR ═══ -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- ═══ PROGRESS BAR ═══ -->
+  <div class="progress"></div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <div class="nav-logo">Études — Vol.02</div>
+    <ul class="nav-links">
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#sequence">Sequence</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#chapters">Chapters</a></li>
+    </ul>
+    <button class="theme-toggle-nav" id="themeToggleNav" aria-label="Alternar tema">
+      <span class="theme-toggle-track">
+        <span class="theme-toggle-thumb"></span>
+      </span>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ MENU FULLSCREEN ═══ -->
+  <div class="menu" id="menu">
+    <nav class="menu-nav">
+      <a href="#intro" class="menu-link">Intro</a>
+      <a href="#manifesto" class="menu-link">Manifesto</a>
+      <a href="#sequence" class="menu-link">Sequence</a>
+      <a href="#features" class="menu-link">Features</a>
+      <a href="#chapters" class="menu-link">Chapters</a>
+    </nav>
+    <div class="menu-footer">
+      <span>Études — Vol.02</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <span class="theme-toggle-label">Light</span>
+        <span class="theme-toggle-track">
+          <span class="theme-toggle-thumb"></span>
+        </span>
+        <span class="theme-toggle-label">Dark</span>
+      </button>
+      <span>2026</span>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="intro">
+    <div class="hero-bg"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">An Études on Motion</div>
+      <h1>Slow is<br><em>smooth.</em><br>Smooth is fast.</h1>
+      <div class="hero-sub">Studio · Research · 2026</div>
+    </div>
+  </section>
+
+  <!-- ═══ MANIFESTO ═══ -->
+  <section class="manifesto" id="manifesto">
+    <div class="manifesto-label">Manifesto · 001</div>
+    <p class="manifesto-text" id="manifestoText">
+      We believe the best interfaces are <em>quiet</em>. They do not shout for attention. They reward the patient eye
+      with small gestures, careful typography, and a sense of rhythm that only reveals itself once you slow down enough
+      to listen.
+    </p>
+  </section>
+
+  <!-- ═══ FRAME SEQUENCE ═══ -->
+  <section class="sequence" id="sequence">
+    <div class="sequence-sticky">
+      <div class="sequence-title l">matter</div>
+      <canvas id="seqCanvas" width="1400" height="1400"></canvas>
+      <div class="sequence-title r">in motion</div>
+      <div class="sequence-meta">
+        <div>Frame <span class="sequence-count" id="frameCount">000</span></div>
+        <div class="sequence-meta-mid">Sequence 01</div>
+        <div class="sequence-meta-end">120 frames · procedural</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES GRID ═══ -->
+  <section class="features" id="features">
+    <div class="features-header">
+      <div class="features-eyebrow">Chapter · 03</div>
+      <h2 class="features-title">A collection of <em>techniques</em><br>and small inventions.</h2>
+    </div>
+    <div class="features-grid">
+
+      <article class="card">
+        <div class="card-visual"></div>
+        <div class="card-body">
+          <div class="card-num">01 / 06</div>
+          <h3>Scroll-driven animations, native</h3>
+          <p>Animations bound to scroll position without JavaScript — via animation-timeline.</p>
+          <span class="tag">CSS · 2024+</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-num">02 / 06</div>
+        <h3>Container queries</h3>
+        <p>Components that respond to their container, not the viewport.</p>
+        <span class="tag">@container</span>
+      </article>
+
+      <article class="card">
+        <div class="card-num">03 / 06</div>
+        <h3>oklch() color</h3>
+        <p>Perceptually uniform color space. Gradients without dead zones.</p>
+        <span class="tag">Color level 4</span>
+      </article>
+
+      <article class="card">
+        <div class="card-num">04 / 06</div>
+        <h3>View Transitions</h3>
+        <p>Native page transitions. Morph between states with a few lines of CSS.</p>
+        <span class="tag">API</span>
+      </article>
+
+      <article class="card">
+        <div class="card-num">05 / 06</div>
+        <h3>:has() selector</h3>
+        <p>Conditional styling based on descendants. The parent selector, finally.</p>
+        <span class="tag">Selector</span>
+      </article>
+
+      <article class="card">
+        <div class="card-num">06 / 06</div>
+        <h3>Variable fonts</h3>
+        <p>One font file, infinite axes. Weight, optical size, softness — all fluid.</p>
+        <span class="tag">OpenType</span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <section class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item">Slow <em>design</em></span>
+      <span class="marquee-item">Quiet <em>interfaces</em></span>
+      <span class="marquee-item">Refined <em>motion</em></span>
+      <span class="marquee-item">Editorial <em>systems</em></span>
+      <span class="marquee-item">Considered <em>typography</em></span>
+      <span class="marquee-item">Slow <em>design</em></span>
+      <span class="marquee-item">Quiet <em>interfaces</em></span>
+      <span class="marquee-item">Refined <em>motion</em></span>
+      <span class="marquee-item">Editorial <em>systems</em></span>
+      <span class="marquee-item">Considered <em>typography</em></span>
+    </div>
+  </section>
+
+  <!-- ═══ SPLIT SCROLL ═══ -->
+  <section class="split" id="chapters">
+    <div class="split-sticky">
+      <div class="split-eyebrow">Chapter · 04</div>
+      <h2 class="split-title">Five <em>principles</em><br>for building<br>with care.</h2>
+    </div>
+    <div class="split-items">
+      <div class="split-item">
+        <div class="split-num">P01</div>
+        <h3>Begin with the end in mind.</h3>
+        <p>Every interaction has a destination. Design the arrival first, then trace the path backward. The user should
+          never wonder what comes next.</p>
+      </div>
+      <div class="split-item">
+        <div class="split-num">P02</div>
+        <h3>Motion is meaning.</h3>
+        <p>Animation is not decoration. It is language. Each transition should communicate a state change, spatial
+          relationship, or hierarchy of importance.</p>
+      </div>
+      <div class="split-item">
+        <div class="split-num">P03</div>
+        <h3>Restraint is a feature.</h3>
+        <p>What you omit matters more than what you include. Negative space, silence, and pause are tools as important
+          as color and type.</p>
+      </div>
+      <div class="split-item">
+        <div class="split-num">P04</div>
+        <h3>Type carries the tone.</h3>
+        <p>Typography is 95% of design. Before color, before layout, before motion — the voice of the work lives in the
+          letterforms.</p>
+      </div>
+      <div class="split-item">
+        <div class="split-num">P05</div>
+        <h3>Ship with intention.</h3>
+        <p>Every pixel is a choice. Every delay is a promise. Every detail reveals whether you cared enough to notice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-giant">End of <em>volume.</em></div>
+    <div class="footer-grid">
+      <div>
+        <h4>Études</h4>
+        <a href="#">About</a>
+        <a href="#">Archive</a>
+        <a href="#">Colophon</a>
+      </div>
+      <div>
+        <h4>Studies</h4>
+        <a href="#">Vol. 01 — Rhythm</a>
+        <a href="#">Vol. 02 — Motion</a>
+        <a href="#">Vol. 03 — Silence</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="#">Twitter</a>
+        <a href="#">Are.na</a>
+        <a href="#">Email</a>
+      </div>
+      <div>
+        <h4>Colophon</h4>
+        <p>Fraunces · JetBrains Mono</p>
+        <p>Stack · Vanilla + GSAP</p>
+        <p>2026 · All rights reversed</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
