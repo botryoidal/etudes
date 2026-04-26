@@ -234,11 +234,13 @@ nav a:hover {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 0.4;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.2);
@@ -312,31 +314,72 @@ nav a:hover {
 
 .theme-toggle-thumb {
   position: absolute;
-  top: 2px;
+  top: 50%;
   left: 2px;
+  transform: translateY(-50%) translateX(18px);
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--accent);
   transition: transform 0.3s var(--easing);
-  /* Estado padrão: dark mode → thumb na direita */
-  transform: translateX(18px);
 }
 
-/* Light mode → thumb na esquerda */
 html.light .theme-toggle-thumb {
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
 }
 
-/* ── Toggle no nav (só track, sem labels) ── */
+/* ── Toggle no nav ── */
 .theme-toggle-nav {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
   background: none;
   border: none;
   padding: 0;
   cursor: none;
   flex-shrink: 0;
+  color: var(--muted);
+  transition: color 0.3s var(--easing);
+}
+
+.theme-toggle-nav:hover {
+  color: var(--ink);
+}
+
+.toggle-icon {
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.3s var(--easing), color 0.3s var(--easing);
+}
+
+/* Escuro: destaca lua, opaca sol */
+.toggle-icon-moon {
+  opacity: 1;
+}
+
+.toggle-icon-sun {
+  opacity: 0.3;
+}
+
+/* Claro: destaca sol, opaca lua */
+html.light .toggle-icon-moon {
+  opacity: 0.3;
+}
+
+html.light .toggle-icon-sun {
+  opacity: 1;
+}
+
+/* Corrige alinhamento vertical do track */
+.theme-toggle-track {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .theme-toggle-nav {
+    display: none;
+  }
 }
 
 /* Esconde em mobile — o do menu cobre */
@@ -408,11 +451,25 @@ html.light .theme-toggle-thumb {
   transform: translateY(0);
 }
 
-.menu.open .menu-link:nth-child(1) { transition-delay: 0.1s; }
-.menu.open .menu-link:nth-child(2) { transition-delay: 0.15s; }
-.menu.open .menu-link:nth-child(3) { transition-delay: 0.2s; }
-.menu.open .menu-link:nth-child(4) { transition-delay: 0.25s; }
-.menu.open .menu-link:nth-child(5) { transition-delay: 0.3s; }
+.menu.open .menu-link:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.menu.open .menu-link:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.menu.open .menu-link:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.menu.open .menu-link:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
+.menu.open .menu-link:nth-child(5) {
+  transition-delay: 0.3s;
+}
 
 .menu-link:hover {
   color: var(--accent);
@@ -489,7 +546,7 @@ html.light .theme-toggle-thumb {
   overflow: hidden;
 }
 
-.hero > * {
+.hero>* {
   grid-area: 1 / 1;
 }
 
@@ -756,12 +813,30 @@ html.light .theme-toggle-thumb {
   container-type: inline-size;
 }
 
-.card:nth-child(1) { grid-column: span 7; grid-row: span 2; }
-.card:nth-child(2) { grid-column: span 5; }
-.card:nth-child(3) { grid-column: span 5; }
-.card:nth-child(4) { grid-column: span 4; }
-.card:nth-child(5) { grid-column: span 4; }
-.card:nth-child(6) { grid-column: span 4; }
+.card:nth-child(1) {
+  grid-column: span 7;
+  grid-row: span 2;
+}
+
+.card:nth-child(2) {
+  grid-column: span 5;
+}
+
+.card:nth-child(3) {
+  grid-column: span 5;
+}
+
+.card:nth-child(4) {
+  grid-column: span 4;
+}
+
+.card:nth-child(5) {
+  grid-column: span 4;
+}
+
+.card:nth-child(6) {
+  grid-column: span 4;
+}
 
 .card {
   position: relative;
@@ -839,7 +914,7 @@ html.light .theme-toggle-thumb {
 }
 
 @container (max-width: 768px) {
-  .features-grid > * {
+  .features-grid>* {
     grid-column: 1 / -1 !important;
   }
 }
@@ -1061,6 +1136,7 @@ footer {
    ACESSIBILIDADE
    ═══════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
